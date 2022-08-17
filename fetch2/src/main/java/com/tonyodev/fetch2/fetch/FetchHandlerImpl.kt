@@ -195,9 +195,8 @@ class FetchHandlerImpl(private val namespace: String,
             }
             EnqueueAction.INCREMENT_FILE_NAME -> {
                 if (createFileOnEnqueue) {
-                    storageResolver.createFile(downloadInfo.file, true)
+                    downloadInfo.file = storageResolver.createFile(downloadInfo.file, true)
                 }
-                downloadInfo.file = downloadInfo.file
                 downloadInfo.id = getUniqueId(downloadInfo.url, downloadInfo.file)
                 false
             }
